@@ -1,0 +1,16 @@
+# Render Blueprint — https://render.com/docs/infrastructure-as-code
+# After pushing to GitHub: Dashboard → New → Blueprint → select this repo (or New Web Service and match these settings).
+
+services:
+  - type: web
+    name: potfolio
+    runtime: node
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "20.18.1"

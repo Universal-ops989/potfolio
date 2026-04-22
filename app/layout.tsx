@@ -10,6 +10,9 @@ function getMetadataBase() {
   if (process.env.VERCEL_URL) {
     return new URL(`https://${process.env.VERCEL_URL}`);
   }
+  if (process.env.RENDER_EXTERNAL_URL) {
+    return new URL(process.env.RENDER_EXTERNAL_URL);
+  }
   return new URL("http://localhost:3000");
 }
 
