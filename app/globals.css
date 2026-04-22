@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent-cyan/20 text-ink;
+  }
+
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-accent-cyan/80;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply border border-white/[0.08] bg-white/[0.03] shadow-card backdrop-blur-xl;
+  }
+
+  .glass-panel-strong {
+    @apply border border-white/[0.1] bg-white/[0.05] shadow-card backdrop-blur-2xl;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-ink via-ink to-accent-cyan/90 bg-clip-text text-transparent;
+  }
+
+  .accent-glow {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+      0 0 60px -20px rgba(34, 211, 238, 0.15);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition duration-300 ease-out;
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-cyan/80;
+  }
+
+  .btn-primary {
+    @apply btn border border-accent-cyan/35 bg-gradient-to-br from-accent-cyan/20 to-accent-indigo/10 text-ink;
+    @apply hover:border-accent-cyan/55 hover:shadow-glow hover:from-accent-cyan/30 hover:to-accent-indigo/15;
+  }
+
+  .btn-secondary {
+    @apply btn border border-white/15 bg-white/[0.04] text-ink backdrop-blur-md;
+    @apply hover:border-white/25 hover:bg-white/[0.07] hover:shadow-glow-indigo;
+  }
+
+  .btn-ghost {
+    @apply btn border border-transparent bg-transparent text-ink-muted;
+    @apply hover:border-white/10 hover:bg-white/[0.04] hover:text-ink;
+  }
+
+  .link-subtle {
+    @apply text-ink-muted underline-offset-4 transition hover:text-ink hover:underline;
+  }
+
+  .section-shell {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .divider-fade {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent;
+  }
+}
+
+@layer utilities {
+  .motion-safe-animate {
+    @apply motion-reduce:animate-none motion-reduce:opacity-100 motion-reduce:translate-y-0;
+  }
+}
